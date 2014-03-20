@@ -447,6 +447,34 @@
             <key>match</key>
             <string>(namespace|delpackage)\s+([\w\.]+)</string>
         </dict>
+        <key>alias</key>
+        <dict>
+            <key>captures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>entity.name.tag.soy</string>
+                </dict>
+                <key>2</key>
+                <dict>
+                    <key>name</key>
+                    <string>variable.parameter.soy</string>
+                </dict>
+                <key>3</key>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.operator.soy</string>
+                </dict>
+                <key>4</key>
+                <dict>
+                    <key>name</key>
+                    <string>variable.parameter.soy</string>
+                </dict>
+            </dict>
+            <key>match</key>
+            <string>(alias)\s+([\w\.]+)\s+(as)\s+([\w\.]+)</string>
+        </dict>
         <key>number</key>
         <dict>
             <key>match</key>
@@ -806,6 +834,10 @@
                 <dict>
                     <key>include</key>
                     <string>#namespace</string>
+                </dict>
+                <dict>
+                    <key>include</key>
+                    <string>#alias</string>
                 </dict>
                 <dict>
                     <key>include</key>
