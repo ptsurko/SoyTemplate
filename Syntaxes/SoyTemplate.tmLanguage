@@ -46,6 +46,10 @@
 			<key>include</key>
 			<string>#css</string>
 		</dict>
+        <dict>
+            <key>include</key>
+            <string>#let</string>
+        </dict>
 		<dict>
 			<key>include</key>
 			<string>#param</string>
@@ -372,11 +376,11 @@
         <key>function</key>
         <dict>
             <key>match</key>
-            <string>\b(isFirst|isLast|index|hasData|length|keys|round|floor|ceiling|min|max|randomInt)\b</string>
+            <string>\b(isNonnull|isFirst|isLast|index|hasData|length|keys|round|floor|ceiling|min|max|randomInt)\b</string>
             <key>name</key>
             <string>support.function.soy</string>
         </dict>
-        <key>if</key>
+        <key>expression</key>
         <dict>
             <key>begin</key>
             <string>(\{/?)\s*(if|elseif)\b</string>
@@ -485,9 +489,80 @@
         <key>operator</key>
         <dict>
             <key>match</key>
-            <string>==|!=|\band\b|\bor\b|\bnot\b|-|\+|(?&lt;!\{)/|\?:</string>
+            <string>==|!=|\band\b|\bor\b|\bnot\b|-|\+|(?&lt;!\{)/|\?:|:</string>
             <key>name</key>
             <string>keyword.operator.soy</string>
+        </dict>
+        <key>let</key>
+        <dict>
+            <key>begin</key>
+            <string>(\{/?)\s*(let)</string>
+            <key>beginCaptures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.tag.begin.soy</string>
+                </dict>
+                <key>2</key>
+                <dict>
+                    <key>name</key>
+                    <string>entity.name.tag.soy</string>
+                </dict>
+            </dict>
+            <key>end</key>
+            <string>(\})</string>
+            <key>endCaptures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.tag.end.soy</string>
+                </dict>
+            </dict>
+            <key>name</key>
+            <string>meta.tag.param.soy</string>
+            <key>patterns</key>
+            <array>
+                <dict>
+                    <key>include</key>
+                    <string>#variable</string>
+                </dict>
+                <dict>
+                    <key>patterns</key>
+                    <array>
+                        <dict>
+                            <key>begin</key>
+                            <string>\s*(:)\s*</string>
+                            <key>beginCaptures</key>
+                            <dict>
+                                <key>1</key>
+                                <dict>
+                                    <key>name</key>
+                                    <string>keyword.operator.soy</string>
+                                </dict>
+                            </dict>
+                            <key>end</key>
+                            <string>\/</string>
+                            <key>patterns</key>
+                            <array>
+                                <dict>
+                                    <key>include</key>
+                                    <string>#variable</string>
+                                </dict>
+                                <dict>
+                                    <key>include</key>
+                                    <string>#operator</string>
+                                </dict>
+                                <dict>
+                                    <key>include</key>
+                                    <string>#function</string>
+                                </dict>
+                            </array>
+                        </dict>
+                    </array>
+                </dict>
+            </array>
         </dict>
         <key>param</key>
         <dict>
