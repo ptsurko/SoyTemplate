@@ -46,10 +46,10 @@
 			<key>include</key>
 			<string>#css</string>
 		</dict>
-        <dict>
-            <key>include</key>
-            <string>#let</string>
-        </dict>
+		<dict>
+			<key>include</key>
+			<string>#let</string>
+		</dict>
 		<dict>
 			<key>include</key>
 			<string>#param</string>
