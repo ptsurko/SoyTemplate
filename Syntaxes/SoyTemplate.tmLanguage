@@ -380,7 +380,7 @@
             <key>name</key>
             <string>support.function.soy</string>
         </dict>
-        <key>expression</key>
+        <key>if</key>
         <dict>
             <key>begin</key>
             <string>(\{/?)\s*(if|elseif)\b</string>
